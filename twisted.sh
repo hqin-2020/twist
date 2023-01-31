@@ -10,7 +10,7 @@ do
             do
                 for alpha_z_tilde_ex in -0.0075 -0.005 -0.0025 -0.001 -0.005 -0.0001
                 do
-                    job_name=symmetric_returns_${symmetric_returns}_state_dependent_xi_${state_dependent_xi}_optimize_over_ell_${optimize_over_ell}
+                    job_name=symmetric_returns_${symmetric_returns}_state_dependent_xi_${state_dependent_xi}_optimize_over_ell_${optimize_over_ell}_ell_ex_${ell_ex}_alpha_z_tilde_ex_${alpha_z_tilde_ex}
                     mkdir -p ./job-outs/$job_name
                     mkdir -p ./bash/$job_name
                     mkdir -p ./output
@@ -29,7 +29,7 @@ do
 #SBATCH --mem=8G
 
 module load julia/1.7.3
-srun julia newsets_twocapitals.jl  --symmetric_returns ${symmetric_returns} --state_dependent_xi ${state_dependent_xi} --optimize_over_ell ${optimize_over_ell} --ell_ex ${ell_ex}
+srun julia newsets_twocapitals.jl  --symmetric_returns ${symmetric_returns} --state_dependent_xi ${state_dependent_xi} --optimize_over_ell ${optimize_over_ell} --ell_ex ${ell_ex} --alpha_z_tilde_ex ${alpha_z_tilde_ex}
 
 EOF
                     sbatch ./bash/$job_name/run.sh
