@@ -44,7 +44,7 @@ if optimize_over_ell == 1:
 elif optimize_over_ell == 0:
     filename_ell = "azt_"+str(round(alpha_z_tilde_ex,3)).replace(".","")+"_ell_opt_"
 
-npz = np.load("output/" + filename_ell + filename + ".npz")
+npz = np.load("output/" + filename_ell + filename)
 def trans(x):
     return np.exp(x)/(np.exp(x)+1)
 def read_csv(name):
