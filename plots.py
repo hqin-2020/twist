@@ -45,4 +45,23 @@ elif optimize_over_ell == 0:
     filename_ell = "azt_"*str(round(alpha_z_tilde_ex,3)).replace(".","")*"_ell_opt_"
 
 npz = np.load("output/" + filename_ell + filename + ".npz")
+def trans(x):
+    return np.exp(x)/(np.exp(x)+1)
+def read_csv(name):
+    h1 = pd.DataFrame(npz[name])
+    h1.index = trans(np.linspace(-18,18,1001))
+    h1.columns = np.linspace(-1,1,201)
+    return h1
+h1 = read_csv('h1')
+h2 = read_csv('h2')
+hz = read_csv('hz')
+fig, ax = plt.subplots(1,1,figsize = (8,8))
+sns.lineplot(data = h1[0],label = r"$-H_1$")
+sns.lineplot(data = h2[0],label = r"$-H_2$")
+sns.lineplot(data = hz[0],label = r"$-H_z$")
+ax.set_title('alpha_z_tilde'+str(alpha_z_tilde_ex)+'_')
+fig.tight_layout()
+# fig.savefig('H.png', dpi = 1200)
+
+plt.show()
 
