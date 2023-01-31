@@ -1,0 +1,13 @@
+parsed_args = parse_commandline() = Dict{String, Any}("optimize_over_ell" => 0, "state_dependent_xi" => 1, "symmetric_returns" => 0)
+=============================================================
+ Economy with two capital stocks: ASYMMETRIC RETURNS         
+ With tilting (change in kappa)                        
+  Calibrated values: A:0.05  phi_1cap: 28.0  alpha_k : -1.2790328319261377  C/I : 0.5727486121839516  I/K : 0.03179147615369309
+=============================================================
+ (1) Compute value function WITHOUT ROBUSTNESS
+    Value Function Converged, Iteration = 7 with ell=Inf and v=-1.405094592101504
+ 16.605635 seconds (22.95 M allocations: 4.683 GiB, 5.71% gc time, 51.27% compilation time)
+=============================================================
+ (2) ell_star is given, it is 0.04226404306515605
+=============================================================
+ (3) Compute value function WITH ROBUSTNESS

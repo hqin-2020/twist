@@ -1,0 +1,27 @@
+parsed_args = parse_commandline() = Dict{String, Any}("optimize_over_ell" => 0, "state_dependent_xi" => 0, "symmetric_returns" => 0)
+=============================================================
+ Economy with two capital stocks: ASYMMETRIC RETURNS         
+ No tilting (xi is NOT state dependent)                      
+  Calibrated values: A:0.05  phi_1cap: 28.0  alpha_k : -1.2790328319261377  C/I : 0.5727486121839516  I/K : 0.03179147615369309
+=============================================================
+ (1) Compute value function WITHOUT ROBUSTNESS
+    Value Function Converged, Iteration = 7 with ell=Inf and v=-1.5805865020263914
+ 16.729913 seconds (22.95 M allocations: 4.683 GiB, 5.71% gc time, 50.94% compilation time)
+=============================================================
+ (2) ell_star is given, it is 0.026320287107624605
+=============================================================
+ (3) Compute value function WITH ROBUSTNESS
+    Value Function Converged, Iteration = 291 with ell=0.026320287107624605 and v=-2.513200402155989
+=============================================================
+ (4) Compute distance between worst-case and baseline
+    alpha_tilde: -0.0075  kappa_tilde: 0.014  q: 0.20065767696389605  re: 0.020131751662273628  chernoff: 0.0  halflife: 0.0
+=============================================================
+ (5) Calibration targets                                     
+    dlogC local mean: 0.004841543369648165
+    dlogC local vol : 0.004770936884192414
+    dlogK local vol : 0.004783967611327329
+    C/I ratio:        0.5735452028062659
+    I/K ratio:        0.03177543106493716
+    dlogC_wc mean   : 0.0038985413862602
+    riskfree rate   : 0.005887035170600128
+=============================================================

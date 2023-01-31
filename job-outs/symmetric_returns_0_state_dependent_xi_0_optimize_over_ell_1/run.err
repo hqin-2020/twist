@@ -1,0 +1,22 @@
+ERROR: LoadError: SingularException(0)
+Stacktrace:
+ [1] lu(S::SparseMatrixCSC{Float64, Int64}; check::Bool)
+   @ SuiteSparse.UMFPACK /software/julia-1.7.3-el8-x86_64/share/julia/stdlib/v1.7/SuiteSparse/src/umfpack.jl:203
+ [2] lu
+   @ /software/julia-1.7.3-el8-x86_64/share/julia/stdlib/v1.7/SuiteSparse/src/umfpack.jl:196 [inlined]
+ [3] \(A::SparseMatrixCSC{Float64, Int64}, B::Vector{Float64})
+   @ SparseArrays /software/julia-1.7.3-el8-x86_64/share/julia/stdlib/v1.7/SparseArrays/src/linalg.jl:1554
+ [4] value_function_twocapitals(ell::Float64, model::TwoCapitalEconomy{Float64}, worrisome::TwoCapitalWorrisome{Float64}, grid::Grid_rz{Float64}, params::FinDiffMethod, symmetric::Int64)
+   @ Main ~/twist/newsets_utils.jl:943
+ [5] (::var"#18#22")(ee::Float64)
+   @ Main ~/twist/newsets_twocapitals.jl:361
+ [6] optimize(f::var"#18#22", x_lower::Float64, x_upper::Float64, mo::Brent; rel_tol::Float64, abs_tol::Float64, iterations::Int64, store_trace::Bool, show_trace::Bool, callback::Nothing, show_every::Int64, extended_trace::Bool)
+   @ Optim ~/.julia/packages/Optim/tP8PJ/src/univariate/solvers/brent.jl:47
+ [7] #optimize#80
+   @ ~/.julia/packages/Optim/tP8PJ/src/univariate/optimize/interface.jl:21 [inlined]
+ [8] optimize(f::Function, lower::Float64, upper::Float64)
+   @ Optim ~/.julia/packages/Optim/tP8PJ/src/univariate/optimize/interface.jl:14
+ [9] top-level scope
+   @ ~/twist/newsets_twocapitals.jl:361
+in expression starting at /home/hqin/twist/newsets_twocapitals.jl:335
+srun: error: midway3-0002: task 0: Exited with exit code 1

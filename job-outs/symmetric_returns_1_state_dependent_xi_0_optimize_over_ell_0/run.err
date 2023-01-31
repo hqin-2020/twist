@@ -1,0 +1,22 @@
+ERROR: LoadError: SystemError: opening file "./data/model_sym_HS.npz": No such file or directory
+Stacktrace:
+ [1] systemerror(p::String, errno::Int32; extrainfo::Nothing)
+   @ Base ./error.jl:174
+ [2] #systemerror#68
+   @ ./error.jl:173 [inlined]
+ [3] systemerror
+   @ ./error.jl:173 [inlined]
+ [4] open(fname::String; lock::Bool, read::Nothing, write::Nothing, create::Nothing, truncate::Bool, append::Nothing)
+   @ Base ./iostream.jl:293
+ [5] open(fname::String, mode::String; lock::Bool)
+   @ Base ./iostream.jl:355
+ [6] open
+   @ ./iostream.jl:355 [inlined]
+ [7] Writer
+   @ ~/.julia/packages/ZipFile/yQ7yx/src/ZipFile.jl:179 [inlined]
+ [8] npzwrite(filename::String, vars::Dict{String, Any})
+   @ NPZ ~/.julia/packages/NPZ/UCofn/src/NPZ.jl:429
+ [9] top-level scope
+   @ ~/twist/newsets_twocapitals.jl:679
+in expression starting at /home/hqin/twist/newsets_twocapitals.jl:679
+srun: error: midway3-0121: task 0: Exited with exit code 1
