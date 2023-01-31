@@ -49,6 +49,7 @@ symmetric_returns    = parsed_args["symmetric_returns"]
 state_dependent_xi   = parsed_args["state_dependent_xi"]
 optimize_over_ell    = parsed_args["optimize_over_ell"]
 ell_ex               = parsed_args["ell_ex"]
+alpha_z_tilde_ex     = parsed_args["alpha_z_tilde_ex"]
 # compute_irfs         = parse(Int64, ARGS[4])
 
 
