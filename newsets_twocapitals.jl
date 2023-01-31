@@ -33,6 +33,10 @@ function parse_commandline()
             help = "ell_ex"
             arg_type = Float64
             default = 0.05
+        "--alpha_z_tilde_ex"
+            help = "alpha_z_tilde_ex"
+            arg_type = Float64
+            default = -0.0075         
     end
     return parse_args(s)
 end
@@ -84,6 +88,12 @@ elseif symmetric_returns == 0
         println(" With tilting (change in beta)                        ")
         filename = (compute_irfs==0) ? "model_asym_HSHS2.npz" : "model_asym_HSHS2_p.npz";
     end
+end
+
+if optimize_over_ell == 1
+    filename_ell = "azt_"*replace(string(round(alpha_z_tilde,digits=3)),"." => "")*"_ell_ex_"*replace(string(round(ell_ex,digits=3)),"." => "");
+elseif optimize_over_ell == 0
+    filename_ell = "azt_"*replace(string(round(alpha_z_tilde,digits=3)),"." => "")*"_ell_opt";
 end
 
 #==============================================================================#
@@ -142,7 +152,7 @@ if symmetric_returns == 1
         alpha_k2_hat = alpha_k1_hat = alpha_k_hat;
 
         # Worrisome model
-        alpha_z_tilde  = -.0075
+        alpha_z_tilde  = alpha_z_tilde_ex#-.0075
         kappa_tilde    = kappa_hat;
         alpha_k1_tilde = alpha_k1_hat
         beta1_tilde    = beta1_hat
@@ -156,7 +166,7 @@ if symmetric_returns == 1
         scale = 1.62
         alpha_k2_hat = alpha_k1_hat = alpha_k_hat;
 
-        alpha_z_tilde  = -.0075;
+        alpha_z_tilde  = alpha_z_tilde_ex#-.0075;
         kappa_tilde    =  .005
         alpha_k1_tilde = alpha_k1_hat
         beta1_tilde    = beta1_hat
@@ -170,7 +180,7 @@ if symmetric_returns == 1
         scale = 1.568
         alpha_k2_hat = alpha_k1_hat = alpha_k_hat;
 
-        alpha_z_tilde  = -.0075;
+        alpha_z_tilde  = alpha_z_tilde_ex#-.0075;
         kappa_tilde    = kappa_hat
         alpha_k1_tilde = alpha_k1_hat
         beta1_tilde    = beta1_hat + .1941
@@ -197,7 +207,7 @@ elseif symmetric_returns == 0
         alpha_k2_hat = alpha_k1_hat = alpha_k_hat;
 
         # Worrisome model
-        alpha_z_tilde  = -.0075;
+        alpha_z_tilde  = alpha_z_tilde_ex#-.0075;
         kappa_tilde    = kappa_hat;
         alpha_k1_tilde = alpha_k1_hat
         beta1_tilde    = beta1_hat
@@ -211,7 +221,7 @@ elseif symmetric_returns == 0
         scale = 1.14
         alpha_k2_hat = alpha_k1_hat = alpha_k_hat + .035; #.034;
 
-        alpha_z_tilde  = -.0075
+        alpha_z_tilde  = alpha_z_tilde_ex#-.0075
         kappa_tilde    = .005;
         alpha_k1_tilde = alpha_k1_hat
         beta1_tilde    = beta1_hat;
@@ -225,7 +235,7 @@ elseif symmetric_returns == 0
         scale = 1.27
         alpha_k2_hat = alpha_k1_hat = alpha_k_hat
 
-        alpha_z_tilde  = -.0075
+        alpha_z_tilde  = alpha_z_tilde_ex#-.0075
         kappa_tilde    = kappa_hat
         alpha_k1_tilde = alpha_k1_hat
         beta1_tilde    = beta1_hat + .194 #.195
@@ -369,6 +379,7 @@ elseif optimize_over_ell == 0
     println(" (2) ell_star is given, it is ", ell_star)
 
 end
+
 println("=============================================================")
 
 
@@ -596,22 +607,22 @@ if compute_irfs == 1
     println("=============================================================")
 end
 
+filename_ell = replace(string(round(ell_ex,digits=3)),"." => "")
 
-CSV.write("g_1.csv",  Tables.table(g), writeheader=false)
-CSV.write("d12.csv",  Tables.table(d1), writeheader=false)
-CSV.write("d22.csv",  Tables.table(d2), writeheader=false)
-CSV.write("h12.csv",  Tables.table(h1), writeheader=false)
-CSV.write("h22.csv",  Tables.table(h2), writeheader=false)
-CSV.write("hz2.csv",  Tables.table(hz), writeheader=false)
-
+CSV.write("./output/para_" * filename_ell*"_"*"g.csv",  Tables.table(g), writeheader=false)
+CSV.write("./output/para_" * filename_ell*"_"*"d1.csv",  Tables.table(d1), writeheader=false)
+CSV.write("./output/para_" * filename_ell*"_"*"d2.csv",  Tables.table(d2), writeheader=false)
+CSV.write("./output/para_" * filename_ell*"_"*"h1.csv",  Tables.table(h1), writeheader=false)
+CSV.write("./output/para_" * filename_ell*"_"*"h2.csv",  Tables.table(h2), writeheader=false)
+CSV.write("./output/para_" * filename_ell*"_"*"hz.csv",  Tables.table(hz), writeheader=false)
 
 results = Dict("delta" => delta,
 # Single capital
-# "alpha_c_hat" => alpha_c_hat, "beta_hat" => beta_hat,
-# "alpha_z_hat" => alpha_z_hat, "kappa_hat" => kappa_hat,
-# "sigma_c" => sigma_c, "sigma_z_1cap" => sigma_z_1cap,
-# "zbar" => zbar, "cons_1cap" => cons_1cap, "stdev_z_1cap" => stdev_z_1cap,
-# "H0" => H0, "H1" => H1,
+"alpha_c_hat" => alpha_c_hat, "beta_hat" => beta_hat,
+"alpha_z_hat" => alpha_z_hat, "kappa_hat" => kappa_hat,
+"sigma_c" => sigma_c, "sigma_z_1cap" => sigma_z_1cap,
+"zbar" => zbar, "cons_1cap" => cons_1cap, "stdev_z_1cap" => stdev_z_1cap,
+"H0" => H0, "H1" => H1,
 # Two capital stocks
 "alpha_k1_hat" => alpha_k1_hat, "alpha_k2_hat" => alpha_k2_hat,
 "beta1_hat" => beta1_hat, "beta2_hat" => beta2_hat,
@@ -626,12 +637,12 @@ results = Dict("delta" => delta,
 "rr" => rr, "zz" => zz, "pii" => pii, "dr" => dr, "dz" => dz, "T" => hor,
 "maxit" => maxit, "crit" => crit, "Delta" => Delta, "inner" => inner,
 # Without robustness
-# "V_noR" => V_noR, "val_noR" => val_noR,
-# "d1_F_noR" => d1_F_noR, "d2_F_noR" => d2_F_noR,
-# "d1_B_noR" => d1_B_noR, "d2_B_noR" => d2_B_noR,
-# "d1_noR" => d1_noR, "d2_noR" => d2_noR,
-# "g_noR_dist" => g_noR_dist, "g_noR" => g_noR,
-# "mu_1_noR" => mu_1_noR, "mu_r_noR" => mu_r_noR, "mu_z_noR" => mu_z_noR,
+"V_noR" => V_noR, "val_noR" => val_noR,
+"d1_F_noR" => d1_F_noR, "d2_F_noR" => d2_F_noR,
+"d1_B_noR" => d1_B_noR, "d2_B_noR" => d2_B_noR,
+"d1_noR" => d1_noR, "d2_noR" => d2_noR,
+"g_noR_dist" => g_noR_dist, "g_noR" => g_noR,
+"mu_1_noR" => mu_1_noR, "mu_r_noR" => mu_r_noR, "mu_z_noR" => mu_z_noR,
 # Robust control under baseline
 "V0" => V0, "V" => V, "val" => val, "ell_star" => ell_star,
 "d1_F" => d1_F, "d2_F" => d2_F,
@@ -674,6 +685,4 @@ results = Dict("delta" => delta,
 "A_1cap" => A_1cap, "phi_1cap" => phi_1cap, "alpha_k_hat" => alpha_k_hat,
 "consumption_investment" => consumption_investment, "investment_capital" => investment_capital)
 
-filename_ell = replace(string(round(ell_ex,digits=3)),"." => "")
-
-npzwrite("./output/para_" * filename_ell*"_"* filename, results)
+npzwrite("./output/" * filename_ell*"_"*filename, results)

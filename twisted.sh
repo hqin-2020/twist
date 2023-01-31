@@ -4,16 +4,18 @@ for symmetric_returns in 0
 do
     for state_dependent_xi in 0
     do
-        for optimize_over_ell in 0
+        for optimize_over_ell in 0 1
         do  
-            for ell_ex in 0.1111111111 0.25 0.0526
+            for ell_ex in 0.05 0.07 0.09 0.11 0.13 0.15 0.17 0.19 0.21 0.23 0.25 
             do
-                job_name=symmetric_returns_${symmetric_returns}_state_dependent_xi_${state_dependent_xi}_optimize_over_ell_${optimize_over_ell}
-                mkdir -p ./job-outs/$job_name
-                mkdir -p ./bash/$job_name
-                mkdir -p ./output
-                touch ./bash/$job_name/run.sh
-                tee ./bash/$job_name/run.sh << EOF
+                for alpha_z_tilde_ex in -0.0075 -0.005 -0.0025 -0.001 -0.005 -0.0001
+                do
+                    job_name=symmetric_returns_${symmetric_returns}_state_dependent_xi_${state_dependent_xi}_optimize_over_ell_${optimize_over_ell}
+                    mkdir -p ./job-outs/$job_name
+                    mkdir -p ./bash/$job_name
+                    mkdir -p ./output
+                    touch ./bash/$job_name/run.sh
+                    tee ./bash/$job_name/run.sh << EOF
 #!/bin/bash
 
 #SBATCH --account=pi-lhansen
@@ -30,7 +32,8 @@ module load julia/1.7.3
 srun julia newsets_twocapitals.jl  --symmetric_returns ${symmetric_returns} --state_dependent_xi ${state_dependent_xi} --optimize_over_ell ${optimize_over_ell} --ell_ex ${ell_ex}
 
 EOF
-                sbatch ./bash/$job_name/run.sh
+                    sbatch ./bash/$job_name/run.sh
+                done
             done
         done
     done
