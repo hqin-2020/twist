@@ -59,10 +59,13 @@ fig, ax = plt.subplots(1,1,figsize = (4,4))
 sns.lineplot(data = h1[0],label = r"$-H_1$")
 sns.lineplot(data = h2[0],label = r"$-H_2$")
 sns.lineplot(data = hz[0],label = r"$-H_z$")
-ax.set_ylim([0,0.18])
+ax.set_ylim([-0.01,0.18])
 ax.set_ylabel(r'$-H$')
 ax.set_xlabel(r'$R$')
-ax.set_title(r'$\tilde{\alpha}_z=$'+str(alpha_z_tilde_ex)[:8]+', '+'$\ell^\star$'+'='+str(npz['ell_star'])[:8])
+if optimize_over_ell == 0:
+    ax.set_title(r'$\tilde{\alpha}_z=$'+str(alpha_z_tilde_ex)[:8]+', '+'$\ell$'+'='+str(npz['ell_star'])[:8])
+elif optimize_over_ell == 1:
+    ax.set_title(r'$\tilde{\alpha}_z=$'+str(alpha_z_tilde_ex)[:8]+', '+'$\ell^\star$'+'='+str(npz['ell_star'])[:8])
 fig.tight_layout()
 
 if optimize_over_ell == 0:
