@@ -91,9 +91,9 @@ elseif symmetric_returns == 0
     end
 end
 
-if optimize_over_ell == 1
+if optimize_over_ell == 0
     filename_ell = "azt_"*replace(string(round(alpha_z_tilde_ex,digits=3)),"." => "")*"_ell_ex_"*replace(string(round(ell_ex,digits=3)),"." => "");
-elseif optimize_over_ell == 0
+elseif optimize_over_ell == 1
     filename_ell = "azt_"*replace(string(round(alpha_z_tilde_ex,digits=3)),"." => "")*"_ell_opt";
 end
 

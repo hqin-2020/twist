@@ -4,7 +4,7 @@ for symmetric_returns in 0
 do
     for state_dependent_xi in 0
     do
-        for optimize_over_ell in 0 1
+        for optimize_over_ell in 0
         do  
             for ell_ex in 0.05 0.07 0.09 0.11 0.13 0.15 0.17 0.19 0.21 0.23 0.25 
             do

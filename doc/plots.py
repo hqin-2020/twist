@@ -39,9 +39,9 @@ elif symmetric_returns == 0:
     elif state_dependent_xi == 2:
         filename = "model_asym_HSHS2.npz"
 
-if optimize_over_ell == 1:
+if optimize_over_ell == 0:
     filename_ell = "azt_"*str(round(alpha_z_tilde_ex,3)).replace(".","")*"_ell_ex_"*str(round(ell_ex,3)).replace(".","")+"_"
-elif optimize_over_ell == 0:
+elif optimize_over_ell == 1:
     filename_ell = "azt_"*str(round(alpha_z_tilde_ex,3)).replace(".","")*"_ell_opt_"
 
 npz = np.load("output/" + filename_ell + filename + ".npz")
