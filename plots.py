@@ -61,7 +61,7 @@ sns.lineplot(data = h2[0],label = r"$-H_2$")
 sns.lineplot(data = hz[0],label = r"$-H_z$")
 ax.set_ylabel(r'$-H$')
 ax.set_xlabel(r'$R$')
-ax.set_title(r'$\log \tilde{\alpha}_z=$'+str(alpha_z_tilde_ex)[:6]+', '+'$\ell^\star$'+'_\='+str(npz['ell_star'])[:6])
+ax.set_title(r'$\log \tilde{\alpha}_z=$'+str(alpha_z_tilde_ex)[:6]+', '+'$\ell^\star$'+'='+str(npz['ell_star'])[:6])
 fig.tight_layout()
 
 if optimize_over_ell == 0:
