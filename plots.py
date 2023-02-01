@@ -59,10 +59,12 @@ fig, ax = plt.subplots(1,1,figsize = (8,8))
 sns.lineplot(data = h1[0],label = r"$-H_1$")
 sns.lineplot(data = h2[0],label = r"$-H_2$")
 sns.lineplot(data = hz[0],label = r"$-H_z$")
-ax.set_title('alpha_z_tilde'+str(alpha_z_tilde_ex)+'_ell_star_'+str(npz['ell_star']))
+ax.set_title(r'$\log \tilde{\alpha_z}$'+str(alpha_z_tilde_ex)[:6]+'_'+'$l^\star$'+'_'+str(npz['ell_star'])[:6])
 fig.tight_layout()
-if 
-"azt_"+str(alpha_z_tilde_ex)+"_ell_"+str(ell_ex)+"_H1H2Hz.png"
+if optimize_over_ell == 0:
+    figname = "azt_"+str(alpha_z_tilde_ex)+"_ell_"+str(ell_ex)+"_H1H2Hz.png"
+elif optimize_over_ell == 1:
+    figname =  "azt_"+str(alpha_z_tilde_ex)+"_ell_opt_H1H2Hz.png"
 
 fig.savefig('doc/' + filename_ell + filename +'H.png', dpi = 1200)
 plt.show()
