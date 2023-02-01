@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 pd.options.display.float_format = '{:.3g}'.format
-sns.set(font_scale = 1.4, rc={"grid.linewidth": 1,'grid.color': '#b0b0b0', 'axes.edgecolor': 'black',"lines.linewidth": 3.0}, style = 'whitegrid')
+sns.set(font_scale = 1.0, rc={"grid.linewidth": 1,'grid.color': '#b0b0b0', 'axes.edgecolor': 'black',"lines.linewidth": 3.0}, style = 'whitegrid')
 
 import argparse
 parser = argparse.ArgumentParser(description="parameter settings")
@@ -59,6 +59,7 @@ fig, ax = plt.subplots(1,1,figsize = (4,4))
 sns.lineplot(data = h1[0],label = r"$-H_1$")
 sns.lineplot(data = h2[0],label = r"$-H_2$")
 sns.lineplot(data = hz[0],label = r"$-H_z$")
+ax.set_ylim([0,0.18])
 ax.set_ylabel(r'$-H$')
 ax.set_xlabel(r'$R$')
 ax.set_title(r'$\tilde{\alpha}_z=$'+str(alpha_z_tilde_ex)[:8]+', '+'$\ell^\star$'+'='+str(npz['ell_star'])[:8])
