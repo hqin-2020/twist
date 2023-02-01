@@ -66,6 +66,6 @@ if optimize_over_ell == 0:
 elif optimize_over_ell == 1:
     figname =  "azt_"+str(alpha_z_tilde_ex)+"_ell_opt_H1H2Hz.png"
 
-fig.savefig('doc/' + filename_ell + filename +'H.png', dpi = 1200)
+fig.savefig('doc/' + figname, dpi = 1200)
 plt.show()
 
