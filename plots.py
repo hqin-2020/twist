@@ -40,7 +40,7 @@ elif symmetric_returns == 0:
         filename = "model_asym_HSHS2.npz"
 
 if optimize_over_ell == 0:
-    filename_ell = "azt_"+str(alpha_z_tilde_ex).replace(".","")[:5]+"_ell_ex_"+str(ell_ex).replace(".","")[:3]+"_"
+    filename_ell = "azt_"+str(alpha_z_tilde_ex).replace(".","")[:5]+"_ell_ex_"+str(ell_ex).replace(".","")[:4]+"_"
 elif optimize_over_ell == 1:
     filename_ell = "azt_"+str(alpha_z_tilde_ex).replace(".","")[:5]+"_ell_opt_"
 
