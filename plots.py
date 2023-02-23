@@ -52,9 +52,12 @@ def read_csv(name):
     h1.index = trans(np.linspace(-18,18,1001))
     h1.columns = np.linspace(-1,1,201)
     return h1
+d1 = read_csv('d1')
+d2 = read_csv('d2')
 h1 = read_csv('h1')
 h2 = read_csv('h2')
 hz = read_csv('hz')
+
 fig, ax = plt.subplots(1,1,figsize = (4,4))
 sns.lineplot(data = h1[0],label = r"$-H_1$")
 sns.lineplot(data = h2[0],label = r"$-H_2$")
@@ -74,5 +77,24 @@ elif optimize_over_ell == 1:
     figname =  "azt_"+str(alpha_z_tilde_ex)+"_ell_opt_H1H2Hz.png"
 
 fig.savefig('doc/' + figname, dpi = 400)
-plt.show()
+plt.close()
 
+fig, ax = plt.subplots(1,1,figsize = (4,4))
+sns.lineplot(data = d1[0],label = r"$d_1$")
+sns.lineplot(data = d2[0],label = r"$d_2$")
+ax.set_ylim([-0.01,0.05])
+ax.set_ylabel(r'$d$')
+ax.set_xlabel(r'$R$')
+if optimize_over_ell == 0:
+    ax.set_title(r'$\tilde{\alpha}_z=$'+str(alpha_z_tilde_ex)[:8]+', '+'$\ell$'+'='+str(npz['ell_star'])[:8])
+elif optimize_over_ell == 1:
+    ax.set_title(r'$\tilde{\alpha}_z=$'+str(alpha_z_tilde_ex)[:8]+', '+'$\ell^\star$'+'='+str(npz['ell_star'])[:8])
+fig.tight_layout()
+
+if optimize_over_ell == 0:
+    figname = "dazt_"+str(alpha_z_tilde_ex)+"_ell_"+str(ell_ex)+"_H1H2Hz.png"
+elif optimize_over_ell == 1:
+    figname =  "dazt_"+str(alpha_z_tilde_ex)+"_ell_opt_H1H2Hz.png"
+
+fig.savefig('doc/' + figname, dpi = 400)
+plt.close()
