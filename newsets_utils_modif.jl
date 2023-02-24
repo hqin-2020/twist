@@ -543,11 +543,13 @@ function dstar_twocapitals!(d1::Array{Float64,2},
             d1new = alpha*0.36/k1a-0.001;
         elseif d1new<0
             d1new = 0.001;
+        end
 
         if d2new*k2a>alpha*0.36
             d2new = alpha*0.36/k2a-0.001;
         elseif d1new<0
             d2new = 0.001;
+        end
 
         d1_temp = d1new * fraction + d1old *(1-fraction);
         d2_temp = d2new * fraction + d2old *(1-fraction);
@@ -558,6 +560,7 @@ function dstar_twocapitals!(d1::Array{Float64,2},
             d1[i] = 0.001;
         else
             d1[i] = d1_temp;
+        end
 
         if d2_temp*k2a>alpha*0.36
             d2[i] = alpha*0.36/k2a-0.001;
@@ -565,6 +568,7 @@ function dstar_twocapitals!(d1::Array{Float64,2},
             d2[i] = 0.001;
         else
             d2[i] = d2_temp;
+        end
     end
 
     nothing
