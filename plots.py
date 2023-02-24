@@ -57,6 +57,8 @@ d2 = read_csv('d2')
 h1 = read_csv('h1')
 h2 = read_csv('h2')
 hz = read_csv('hz')
+V = read_csv('V')
+V0 = read_csv('V0')
 
 fig, ax = plt.subplots(1,1,figsize = (4,4))
 sns.lineplot(data = h1[0],label = r"$-H_1$")
@@ -84,6 +86,18 @@ sns.lineplot(data = d1[0],label = r"$d_1$")
 sns.lineplot(data = d2[0],label = r"$d_2$")
 ax.set_ylim([-0.01,0.05])
 ax.set_ylabel(r'$d$')
+ax.set_xlabel(r'$R$')
+if optimize_over_ell == 0:
+    ax.set_title(r'$\tilde{\alpha}_z=$'+str(alpha_z_tilde_ex)[:8]+', '+'$\ell$'+'='+str(npz['ell_star'])[:8])
+elif optimize_over_ell == 1:
+    ax.set_title(r'$\tilde{\alpha}_z=$'+str(alpha_z_tilde_ex)[:8]+', '+'$\ell^\star$'+'='+str(npz['ell_star'])[:8])
+fig.tight_layout()
+
+fig, ax = plt.subplots(1,1,figsize = (4,4))
+sns.lineplot(data = V[0],label = r"$V$")
+sns.lineplot(data = V0[0],label = r"$V0$")
+# ax.set_ylim([-0.01,0.05])
+ax.set_ylabel(r'$V$')
 ax.set_xlabel(r'$R$')
 if optimize_over_ell == 0:
     ax.set_title(r'$\tilde{\alpha}_z=$'+str(alpha_z_tilde_ex)[:8]+', '+'$\ell$'+'='+str(npz['ell_star'])[:8])
