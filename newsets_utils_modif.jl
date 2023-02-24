@@ -17,8 +17,8 @@ mutable struct Baseline{T}
     kappa::T
     sigma_z::Array{T, 1}
 
-    beta1::T
-    eta1::T
+    beta::T
+    eta::T
     sigma_k::Array{T, 1}
 
     delta::T
@@ -846,8 +846,8 @@ function value_function_twocapitals(gamma::Float64,
       alpha = model.t1.alpha;
       phi1, phi2 = model.t1.phi, model.t2.phi;
 
-      t1 = (.01)^2*dot(s_k2 - s_k1, s_k2 - s_k1)/(2*dr2);
-      t2 = (.01)*dot(s_k2 - s_k1, s_z)/(2*drdz);
+      t1 = dot(s_k2 - s_k1, s_k2 - s_k1)/(2*dr2);
+      t2 = dot(s_k2 - s_k1, s_z)/(2*drdz);
       t3 = dot(s_z, s_z)/(2*dz2);
 
       #========================================================================#
