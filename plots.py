@@ -93,9 +93,17 @@ elif optimize_over_ell == 1:
     ax.set_title(r'$\tilde{\alpha}_z=$'+str(alpha_z_tilde_ex)[:8]+', '+'$\ell^\star$'+'='+str(npz['ell_star'])[:8])
 fig.tight_layout()
 
+if optimize_over_ell == 0:
+    figname = "dazt_"+str(alpha_z_tilde_ex)+"_ell_"+str(ell_ex)+"_H1H2Hz.png"
+elif optimize_over_ell == 1:
+    figname =  "dazt_"+str(alpha_z_tilde_ex)+"_ell_opt_H1H2Hz.png"
+
+fig.savefig('doc/' + figname, dpi = 400)
+plt.close()
+
 fig, ax = plt.subplots(1,1,figsize = (4,4))
 sns.lineplot(data = V[0],label = r"$V$")
-sns.lineplot(data = V0[0],label = r"$V0$")
+# sns.lineplot(data = V0[0],label = r"$V0$")
 # ax.set_ylim([-0.01,0.05])
 ax.set_ylabel(r'$V$')
 ax.set_xlabel(r'$R$')
@@ -106,9 +114,9 @@ elif optimize_over_ell == 1:
 fig.tight_layout()
 
 if optimize_over_ell == 0:
-    figname = "dazt_"+str(alpha_z_tilde_ex)+"_ell_"+str(ell_ex)+"_H1H2Hz.png"
+    figname = "Vazt_"+str(alpha_z_tilde_ex)+"_ell_"+str(ell_ex)+"_H1H2Hz.png"
 elif optimize_over_ell == 1:
-    figname =  "dazt_"+str(alpha_z_tilde_ex)+"_ell_opt_H1H2Hz.png"
+    figname =  "Vazt_"+str(alpha_z_tilde_ex)+"_ell_opt_H1H2Hz.png"
 
 fig.savefig('doc/' + figname, dpi = 400)
 plt.close()
