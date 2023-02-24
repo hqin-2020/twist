@@ -952,10 +952,26 @@ function value_function_twocapitals(gamma::Float64,
 
           Vchange = reshape(V_stacked, II, JJ) - v;
           distance[n] = maximum(abs.(Vchange));
-          #println(distance[n])
 
           v = reshape(V_stacked, II, JJ);
 
+          println("----------------------------------");
+          println("Iteration = ",n);
+          println("Distance = ",distance[n]);
+          println("v max = ",maximum(v));
+          println("v min = ",minimum(v));
+          println("d1 max = ",maximum(d1));
+          println("d1 min = ",minimum(d1));
+          println("d2 max = ",maximum(d2));
+          println("d2 min = ",minimum(d2));
+          println("h1 max = ",maximum(h1));
+          println("h1 min = ",minimum(h1));
+          println("h2 max = ",maximum(h2));
+          println("h2 min = ",minimum(h2));
+          println("hz max = ",maximum(hz));
+          println("hz min = ",minimum(hz));
+          println("----------------------------------")
+          
           if distance[n]<crit
               val = v[II_half, JJ_half];
               #println(val)
