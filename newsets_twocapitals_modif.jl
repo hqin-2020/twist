@@ -140,7 +140,6 @@ technology2 = Technology(alpha, phi2);
 model = TwoCapitalEconomy(baseline1, baseline2, technology1, technology2);
 
 grid = Grid_rz(rmin, rmax, II, zmin, zmax, JJ);
-grid_opt = Grid_rz(rmin_opt, rmax_opt, II_opt, zmin_opt, zmax_opt, JJ_opt);
 params = FinDiffMethod(maxit, crit, Delta);
 
 #==============================================================================#
