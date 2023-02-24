@@ -593,10 +593,10 @@ function drifts!(mu_1::Array{Float64, 2},
 
     zeta = model.k1.zeta;
     kappa = model.k1.kappa;
-    beta1 = model.k1.beta1;
-    beta2 = model.k2.beta2;
-    eta1 = model.k1.eta1;
-    eta2 = model.k2.eta2;
+    beta1 = model.k1.beta;
+    beta2 = model.k2.beta;
+    eta1 = model.k1.eta;
+    eta2 = model.k2.eta;
     s_k1 = model.k1.sigma_k;
     s_k2 = model.k2.sigma_k;
 
