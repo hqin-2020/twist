@@ -668,7 +668,7 @@ function create_uu!(uu::Array{Float64, 1},
                     V::Array{Float64, 2},
                     model::TwoCapitalEconomy)
 
-    alpha = model.t1.A;
+    alpha = model.t1.alpha;
     delta = model.k1.delta;
     zeta = model.k1.zeta;
     kappa = model.k1.kappa;
