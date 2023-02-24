@@ -534,10 +534,10 @@ function dstar_twocapitals!(d1::Array{Float64,2},
         k2a = ((1-zeta)*exp.(p)^(kappa-1) + zeta)^(1/(kappa-1));
         c = alpha - d1old*k1a - d2old*k2a;
         
-        d1new_temp = ((1-zeta)*k1a^(1-kappa)-Vr[i]) / (delta/(1-rho)*(exp.(rho-1)*V[i])*c^(-rho)*k1a)
-        d1new = (d1new_temp-1)/phi1
-        d2new_temp = (zeta*k2a^(1-kappa)+Vr[i]) / (delta/(1-rho)*(exp.(rho-1)*V[i])*c^(-rho)*k2a)
-        d2new = (d2new_temp-1)/phi2
+        d1new_temp = ((1-zeta)*k1a^(1-kappa)-Vr[i]) / (delta/(1-rho)*(exp.(rho-1)*V[i])*c^(-rho)*k1a);
+        d1new = (d1new_temp-1)/phi1;
+        d2new_temp = (zeta*k2a^(1-kappa)+Vr[i]) / (delta/(1-rho)*(exp.(rho-1)*V[i])*c^(-rho)*k2a);
+        d2new = (d2new_temp-1)/phi2;
 
         d1[i] = d1new * fraction + d1old *(1-fraction);
         d2[i] = d2new * fraction + d2old *(1-fraction);
@@ -601,14 +601,14 @@ function drifts!(mu_1::Array{Float64, 2},
     s_k2 = model.k2.sigma_k;
 
     for i=1:IJ
-        p, z = pii[i], zz[i]
+        p, z = pii[i], zz[i];
 
         k1a = (1-zeta + zeta*exp.(p)^(1-kappa))^(1/(kappa-1));
         k2a = ((1-zeta)*exp.(p)^(kappa-1) + zeta)^(1/(kappa-1));
 
-        dkadk1dk1 = (kappa-1) * ((1-zeta)^2*(k1a)^(-2*kappa+2) - kappa/(kappa-1)*(1-zeta)*(k1a)^(-kappa+1))
-        dkadk1dk2 = (kappa-1) * zeta*(1-zeta)*(k1a)^(-kappa+1)*(k2a)^(-kappa+1) 
-        dkadk2dk2 = (kappa-1) * (zeta^2*(k2a)^(-2*kappa+2) - kappa/(kappa-1)*(1-zeta)*(k2a)^(-kappa+1))
+        dkadk1dk1 = (kappa-1) * ((1-zeta)^2*(k1a)^(-2*kappa+2) - kappa/(kappa-1)*(1-zeta)*(k1a)^(-kappa+1));
+        dkadk1dk2 = (kappa-1) * zeta*(1-zeta)*(k1a)^(-kappa+1)*(k2a)^(-kappa+1);
+        dkadk2dk2 = (kappa-1) * (zeta^2*(k2a)^(-2*kappa+2) - kappa/(kappa-1)*(1-zeta)*(k2a)^(-kappa+1));
 
         mu_k1 = 1/phi1 * log(1+phi1*d1[i]) + beta1*z - eta1;
         mu_k2 = 1/phi2 * log(1+phi2*d2[i]) + beta2*z - eta2;
@@ -641,12 +641,12 @@ function drifts_distortion!(h::Array{Float64, 2},
     kappa = model.k1.kappa;
 
     for i=1:IJ
-        p = pii[i]
+        p = pii[i];
 
         k1a = (1-zeta + zeta*exp.(p)^(1-kappa))^(1/(kappa-1));
         k2a = ((1-zeta)*exp.(p)^(kappa-1) + zeta)^(1/(kappa-1));
 
-        h[i] = (s_k1*(1-zeta)*(k1a)^(1-kappa) + s_k2*(zeta)*(k2a)^(1-kappa) + (s_k2-s_k1)*Vr[i]) + s_z*Vz[i]
+        h[i] = (s_k1*(1-zeta)*(k1a)^(1-kappa) + s_k2*(zeta)*(k2a)^(1-kappa) + (s_k2-s_k1)*Vr[i]) + s_z*Vz[i];
     end
 
     nothing
@@ -784,7 +784,7 @@ function value_function_twocapitals(gamma::Float64,
 
       rr = r * ones(1, JJ);
       zz = ones(II, 1) * z;
-      pii = rr
+      pii = rr;
 
       #========================================================================#
       # Storing matrices
@@ -843,7 +843,7 @@ function value_function_twocapitals(gamma::Float64,
       s_z =  model.k1.sigma_z;
 
       # (2) Two capitals case: technology
-      alpha = model.t1.alpha
+      alpha = model.t1.alpha;
       phi1, phi2 = model.t1.phi, model.t2.phi;
 
       t1 = (.01)^2*dot(s_k2 - s_k1, s_k2 - s_k1)/(2*dr2);

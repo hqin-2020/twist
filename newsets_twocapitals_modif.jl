@@ -121,8 +121,8 @@ phi2 = 28.0
 
 # (3) GRID
 II, JJ = 1001, 201;
-rmax =  log(20).;
-rmin = -log(20) 
+rmax =  log(20);
+rmin = -log(20); 
 zmax = 1.;
 zmin = -zmax;
 
