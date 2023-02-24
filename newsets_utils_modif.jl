@@ -882,7 +882,7 @@ function value_function_twocapitals(gamma::Float64,
       # INITIALIZATION                                                         #
       #========================================================================#
       for j=1:JJ
-         V0[:, j] = range(1, stop=1, length=II);
+         V0[:, j] = range(-2, stop=-1, length=II);
       end
 
       v = copy(V0);
