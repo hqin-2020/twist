@@ -104,9 +104,9 @@ zeta = 0.5
 kappa = 0.0
 
 scale = 1.32
-sigma_k1 = scale * np.array([.0048, 0, 0])
-sigma_k2 = scale * np.array([ 0, .0048, 0])
-sigma_z = np.array([ .011*np.sqrt(5), .011*np.sqrt(5) , .025])
+sigma_k1 = [.0048*sqrt(scale),               .0,   .0];
+sigma_k2 = [.0              , .0048*sqrt(scale),   .0];
+sigma_z =  [.011*sqrt(.5)   , .011*sqrt(.5)   , .025];
 
 eta1 = 0.013
 eta2 = 0.013
