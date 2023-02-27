@@ -639,12 +639,12 @@ results = Dict("delta" => delta,
 "rr" => rr, "zz" => zz, "pii" => pii, "dr" => dr, "dz" => dz, "T" => hor,
 "maxit" => maxit, "crit" => crit, "Delta" => Delta, "inner" => inner,
 # Without robustness
-"V_noR" => V_noR, "val_noR" => val_noR,
-"d1_F_noR" => d1_F_noR, "d2_F_noR" => d2_F_noR,
-"d1_B_noR" => d1_B_noR, "d2_B_noR" => d2_B_noR,
-"d1_noR" => d1_noR, "d2_noR" => d2_noR,
-"g_noR_dist" => g_noR_dist, "g_noR" => g_noR,
-"mu_1_noR" => mu_1_noR, "mu_r_noR" => mu_r_noR, "mu_z_noR" => mu_z_noR,
+# "V_noR" => V_noR, "val_noR" => val_noR,
+# "d1_F_noR" => d1_F_noR, "d2_F_noR" => d2_F_noR,
+# "d1_B_noR" => d1_B_noR, "d2_B_noR" => d2_B_noR,
+# "d1_noR" => d1_noR, "d2_noR" => d2_noR,
+# "g_noR_dist" => g_noR_dist, "g_noR" => g_noR,
+# "mu_1_noR" => mu_1_noR, "mu_r_noR" => mu_r_noR, "mu_z_noR" => mu_z_noR,
 # Robust control under baseline
 "V0" => V0, "V" => V, "val" => val, "ell_star" => ell_star,
 "d1_F" => d1_F, "d2_F" => d2_F,
@@ -660,16 +660,16 @@ results = Dict("delta" => delta,
 "g_wc_dist" => g_wc_dist, "g_wc" => g_wc,
 "mu_1_wc" => mu_1_wc, "mu_r_wc" => mu_r_wc, "mu_z_wc" => mu_z_wc,
 # Non-robust control under worst-case
-"g_wc_noR_dist" => g_wc_noR_dist, "g_wc_noR" => g_wc_noR,
-# Distortion measures
-"re" => re, "q" => q,
-"chernoff" => chernoff, "halflife" => halflife,
-# Local uncertainty prices (stationary distributions)
-"h12_vec" => h12_vec, "h12_density" => h12_density,
-"hz_vec" => hz_vec, "hz_density" => hz_density,
-# Risk-free rate (stationary distributions)
-"riskfree" => riskfree,
-"rf_vec" => rf_vec, "rf_density" => rf_density,
+# "g_wc_noR_dist" => g_wc_noR_dist, "g_wc_noR" => g_wc_noR,
+# # Distortion measures
+# "re" => re, "q" => q,
+# "chernoff" => chernoff, "halflife" => halflife,
+# # Local uncertainty prices (stationary distributions)
+# "h12_vec" => h12_vec, "h12_density" => h12_density,
+# "hz_vec" => hz_vec, "hz_density" => hz_density,
+# # Risk-free rate (stationary distributions)
+# "riskfree" => riskfree,
+# "rf_vec" => rf_vec, "rf_density" => rf_density,
 # Consumption (stationary distributions)
 "cons_noR" => cons_noR, "cons" => cons,
 "cons_noR_vec" => cons_noR_vec, "cons_noR_density" => cons_noR_density,
@@ -679,10 +679,10 @@ results = Dict("delta" => delta,
 "logC_mu_noR" => logC_mu_noR, "logC_sigma_noR" => logC_sigma_noR,
 "logC_mu" => logC_mu, "logC_sigma" => logC_sigma,
 "logC_mu_wc" => logC_mu_wc, "logC_sigma_wc" => logC_sigma_wc,
-# Impulse Response Functions
-"R_irf" => pii_irf, "Z_irf" => z_irf,
-# Expected future uncertainty prices
-"shock_price_12" => price_12, "shock_price_z" => price_z,
+# # Impulse Response Functions
+# "R_irf" => pii_irf, "Z_irf" => z_irf,
+# # Expected future uncertainty prices
+# "shock_price_12" => price_12, "shock_price_z" => price_z,
 # Calibration
 "A_1cap" => A_1cap, "phi_1cap" => phi_1cap, "alpha_k_hat" => alpha_k_hat,
 "consumption_investment" => consumption_investment, "investment_capital" => investment_capital)
