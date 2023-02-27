@@ -1,0 +1,14 @@
+ERROR: LoadError: SingularException(0)
+Stacktrace:
+ [1] lu(S::SparseMatrixCSC{Float64, Int64}; check::Bool)
+   @ SuiteSparse.UMFPACK /software/julia-1.7.3-el8-x86_64/share/julia/stdlib/v1.7/SuiteSparse/src/umfpack.jl:203
+ [2] lu
+   @ /software/julia-1.7.3-el8-x86_64/share/julia/stdlib/v1.7/SuiteSparse/src/umfpack.jl:196 [inlined]
+ [3] \(A::SparseMatrixCSC{Float64, Int64}, B::Vector{Float64})
+   @ SparseArrays /software/julia-1.7.3-el8-x86_64/share/julia/stdlib/v1.7/SparseArrays/src/linalg.jl:1554
+ [4] value_function_twocapitals(gamma::Float64, rho::Float64, fraction::Float64, model::TwoCapitalEconomy{Float64}, grid::Grid_rz{Float64}, params::FinDiffMethod, symmetric::Int64)
+   @ Main ~/twist/newsets_utils_modif.jl:977
+ [5] top-level scope
+   @ ~/twist/newsets_twocapitals_modif.jl:150
+in expression starting at /home/hqin/twist/newsets_twocapitals_modif.jl:150
+srun: error: midway3-0136: task 0: Exited with exit code 1
